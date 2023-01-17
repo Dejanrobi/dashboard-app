@@ -1,0 +1,65 @@
+.expenses{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 75vw;
+    background-color: #101010;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.expensesCard{
+    background-color: white;
+    width: 95%;
+    height: 95%;
+    border-radius: 25px;
+    // display: flex;
+}
+
+.expensesOverview{
+    width: 65%;
+    padding: 5rem;
+
+}
+
+.expensesHeader{
+    display: flex;
+    justify-content: space-between;  
+}
+
+.expensesTitle{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.expensesActions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.person1{
+    position: relative;
+    left: -73%;
+    z-index: 3;
+}
+
+.person2{
+    position: relative;
+    left: -83%;
+    z-index: 2;
+}
+
+.person3{
+    position: relative;
+    left: -93%;
+    z-index: 1;
+}
+
+.addIcon{
+    cursor: pointer;
+    
+}
