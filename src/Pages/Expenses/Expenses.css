@@ -15,11 +15,22 @@
   width: 95%;
   height: 95%;
   border-radius: 25px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.expensesCard::-webkit-scrollbar {
+  width: 8px;
+  height: 20px;
+}
+.expensesCard::-webkit-scrollbar-thumb {
+  background-color: #919090;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
 }
 
 .expensesOverview {
-  width: 65%;
-  padding: 5rem;
+  padding: 3rem 4rem;
 }
 
 .expensesHeader {
@@ -34,28 +45,93 @@
 
 .expensesActions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 .person1 {
-  position: relative;
-  left: -73%;
+  margin-right: -0.5rem;
   z-index: 3;
 }
 
 .person2 {
-  position: relative;
-  left: -83%;
+  margin-right: -0.5rem;
   z-index: 2;
 }
 
-.person3 {
-  position: relative;
-  left: -93%;
-  z-index: 1;
+.personImages {
+  margin-right: 10px;
 }
 
 .addIcon {
   cursor: pointer;
+}
+
+button {
+  all: unset;
+}
+
+.dateRange {
+  margin-top: 1rem;
+  opacity: 0.5;
+  margin-bottom: 2rem;
+}
+
+.expensesOverviewHeader {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.expensesOverviewTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.expenseItem {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expenseItemDetails {
+  margin-left: 1rem;
+}
+
+.expenseItemLeft {
+  display: flex;
+  align-items: center;
+}
+
+.expenseItemDiv {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expenseItemTitle {
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+.expenseItemTime {
+  opacity: 0.5;
+  font-size: 14px;
+  color: #404852;
+}
+
+.expenseItemPrice {
+  font-weight: 600;
+}
+
+.expensesScroll {
+  width: 70%;
+  height: 100%;
 }/*# sourceMappingURL=Expenses.css.map */
