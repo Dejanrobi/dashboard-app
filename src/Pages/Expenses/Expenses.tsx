@@ -4,7 +4,7 @@ import { BarChart, Bar, ResponsiveContainer, Cell } from 'recharts';
 
 
 // Importing the Images
-import { AddIcon, CartIcon, HouseIcon, MenuIcon, Person1, Person2, Person3, TransportIcon } from "../../constants/images";
+import { AddIcon, Boxes, CartIcon, HouseIcon, MenuIcon, Person1, Person2, Person3, Plant, TransportIcon } from "../../constants/images";
 // Importing the CSS
 import "./Expenses.css";
 
@@ -205,13 +205,41 @@ export default function Expenses(){
       },
     ];
     
+    // Spend Categories
+    const spendCategories = [
+      {
+        id: 1,
+        category: "Food and Drinks",
+        price: 872.4,
+      },
+      {
+        id: 2,
+        category: "Shopping",
+        price: 1378.2,
+      },
+      {
+        id: 3,
+        category: "Housing",
+        price: 928.5,
+      },
+      {
+        id: 4,
+        category: "Transportation",
+        price: 420.7,
+      },
+      {
+        id: 5,
+        category: "Vehicle",
+        price: 520,
+      },
+    ];
 
     return(
         <>
             <main className="expenses">             
               <div className="expensesCard">
-                    <div className="expensesScroll">
-                      <section className="expensesOverview">
+                    <section className="expensesOverview">
+                        <div className="expensesHeadDate">
                           <div className="expensesHeader">
                               <p className="expensesTitle">Expenses</p>
                               <div className="expensesActions">
@@ -228,92 +256,107 @@ export default function Expenses(){
 
                           <p className="dateRange">01 - 25 March, 2020</p>
 
-                          <div className="expensesInnerScroll">
-                            <ResponsiveContainer width="100%" minHeight="9vh">
-                                <BarChart width={150} height={40} data={data}>
-                                <Bar dataKey="uv" fill="rgba(21, 122, 255, .2)" onMouseOver={handleMouseOver}>
-                                    {
-                                        data.map((entry, index)=>(
-                                            <Cell cursor="pointer"
-                                            fill={index === cellActiveIndex?"rgb(21, 122, 255)":"rgba(21, 122, 255, .2)"}
-                                            key={index}
-                                            />
-                                        ))
-                                    }
-                                </Bar>
-                                </BarChart>
-                            </ResponsiveContainer>
+                        </div>
+                          
+                        <div className="expensesDetails">
+                          <div>
+                              <ResponsiveContainer width="100%" height="9%">
+                                  <BarChart width={150} height={40} data={data}>
+                                  <Bar dataKey="uv" fill="rgba(21, 122, 255, .2)" onMouseOver={handleMouseOver}>
+                                      {
+                                          data.map((entry, index)=>(
+                                              <Cell cursor="pointer"
+                                              fill={index === cellActiveIndex?"rgb(21, 122, 255)":"rgba(21, 122, 255, .2)"}
+                                              key={index}
+                                              />
+                                          ))
+                                      }
+                                  </Bar>
+                                  </BarChart>
+                              </ResponsiveContainer>
 
-                             <div className="expensesOverviewHeader">
-                              <p className="expensesOverviewTitle">
-                                  Today
-                              </p>
-                              <button><img src={MenuIcon} alt="" /></button>
-                          </div>
+                              <div className="expensesOverviewHeader">
+                                <p className="expensesOverviewTitle">
+                                    Today
+                                </p>
+                                <button><img src={MenuIcon} alt="" /></button>
+                              </div>
 
-                          <ul>
-                            {
-                              todayExpenses.map((expense)=>(
+                              <ul>
+                                {
+                                  todayExpenses.map((expense)=>(
 
 
-                                <li className="expenseItem" key={expense.id}>
-                                    <div className="expenseItemLeft">
-                                        <div style={{backgroundColor: expense.iconBackgroundColor}} className="expenseItemDiv">
-                                            <img src={CartIcon} alt={expense.expense} />
+                                    <li className="expenseItem" key={expense.id}>
+                                        <div className="expenseItemLeft">
+                                            <div style={{backgroundColor: expense.iconBackgroundColor}} className="expenseItemDiv">
+                                                <img src={CartIcon} alt={expense.expense} />
+                                            </div>
+                                            <div className="expenseItemDetails">
+                                                <p className="expenseItemTitle">
+                                                    {expense.expense}
+                                                </p>
+                                                <p className="expenseItemTime">{expense.time} - {expense.location}</p>
+                                            </div>
                                         </div>
-                                        <div className="expenseItemDetails">
-                                            <p className="expenseItemTitle">
-                                                {expense.expense}
-                                            </p>
-                                            <p className="expenseItemTime">{expense.time} - {expense.location}</p>
-                                        </div>
-                                    </div>
 
-                                    <p className="expenseItemPrice">-{expense.price.toFixed(2)}</p>
-                                </li>
+                                        <p className="expenseItemPrice">-{expense.price.toFixed(2)}</p>
+                                    </li>
 
-                              ))
-                            }
-                            
+                                  ))
+                                }
+                                
+                                  
+                              </ul>
+
+                              <div className="expensesOverviewHeader">
+                                  <p className="expensesOverviewTitle">
+                                      Monday, 23 March 2020
+                                  </p>
+                                  <button><img src={MenuIcon} alt="" /></button>
+                              </div>
+                                  
                               
-                          </ul>
+
+                              <ul>
+                                {
+                                  todayExpenses.map((expense)=>(
 
 
-                          <div className="expensesOverviewHeader">
-                              <p className="expensesOverviewTitle">
-                                  Monday, 23 March 2020
-                              </p>
-                              <button><img src={MenuIcon} alt="" /></button>
-                          </div>
-
-                          <ul>
-                            {
-                              todayExpenses.map((expense)=>(
-
-
-                                <li className="expenseItem" key={expense.id}>
-                                    <div className="expenseItemLeft">
-                                        <div style={{backgroundColor: expense.iconBackgroundColor}} className="expenseItemDiv">
-                                            <img src={CartIcon} alt={expense.expense} />
+                                    <li className="expenseItem" key={expense.id}>
+                                        <div className="expenseItemLeft">
+                                            <div style={{backgroundColor: expense.iconBackgroundColor}} className="expenseItemDiv">
+                                                <img src={CartIcon} alt={expense.expense} />
+                                            </div>
+                                            <div className="expenseItemDetails">
+                                                <p className="expenseItemTitle">
+                                                    {expense.expense}
+                                                </p>
+                                                <p className="expenseItemTime">{expense.time} - {expense.location}</p>
+                                            </div>
                                         </div>
-                                        <div className="expenseItemDetails">
-                                            <p className="expenseItemTitle">
-                                                {expense.expense}
-                                            </p>
-                                            <p className="expenseItemTime">{expense.time} - {expense.location}</p>
-                                        </div>
-                                    </div>
 
-                                    <p className="expenseItemPrice">-{expense.price.toFixed(2)}</p>
-                                </li>
+                                        <p className="expenseItemPrice">-{expense.price.toFixed(2)}</p>
+                                    </li>
 
-                              ))
-                            }
+                                  ))
+                                }
+                                
+                                  
+                              </ul>
+
+                            </div>
+
+                        </div>
                             
-                              
-                          </ul>
+                          
 
-                          </div>
+                          
+
+
+                          
+
+               
                           {/* Using a library called Recharts to create charts */}
 
                           {/* the Responsive Container */}
@@ -321,10 +364,49 @@ export default function Expenses(){
 
                          
 
-                      </section>
-
-                    </div>
+                    </section>
                     
+                    
+                    <section className="moneyOverview">
+                        <p className="moneyOverviewTitle">Where'd your money go?</p>
+                        
+                        <ul>
+                           {
+                            spendCategories.map((category)=>(
+                              <li key={category.id}>
+                                <div className="spendCategory">
+                                  <p className="spendCategoryName">{category.category}</p>
+                                  <p className="spendCategoryPrice">{category.price.toFixed(2)}</p>
+                                </div>
+
+                                <div className="spendCategoryBar">
+                                  {/* Calculate the amount of space the colored bar takes by using the inline styling */}
+                                  <div style={{width:`${(category.price/spendCategories.reduce((acc, current) => acc+current.price, 0))*100}%`}} className="spendCategoryColoredBar">
+
+                                  </div>
+                                </div>
+                              </li>
+
+                            ))
+                          }
+
+                          
+                        </ul>
+
+                        <div className="saveMoneyDiv">
+                          <img className='boxes' src={Boxes} alt="boxes" />
+                          <img className='plant' src={Plant} alt="boxes" />
+
+                          <p className='saveMoneyTitle'>Save more money</p>
+                          <p className='saveMoneyInfo'>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+                          
+                          <button className='button' type='button'>VIEW TIPS</button>
+                        </div>
+
+                        {/* <div className="james">
+                          Peter
+                        </div> */}
+                    </section>
               </div>
 
               
